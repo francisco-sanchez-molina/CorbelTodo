@@ -1,0 +1,15 @@
+{
+  "name": "CorbelTodo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "alt": "^0.18.2",
+    "corbel-js": "corbel-platform/corbel-js#xhrOnLoad",
+    "react": "^0.14.8",
+    "react-native": "^0.24.1",
+    "react-native-simple-router": "^0.9.0"
+  }
+}
