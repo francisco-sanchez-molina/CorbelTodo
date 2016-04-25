@@ -6,6 +6,10 @@ import React, {
   StyleSheet
 } from 'react-native';
 
+import Button from 'react-native-button';
+
+import {Actions} from "react-native-router-flux";
+
 var styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -22,61 +26,45 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
-  },
+  }
 });
 
+
+var styles = StyleSheet.create({
+  text: {
+    color: '#007aff',
+    fontFamily: '.HelveticaNeueInterface-MediumP4',
+    fontSize: 17,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  disabledText: {
+    color: '#dcdcdc',
+  },
+  group: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+});
 export default class Home extends Component {
 
   constructor(props) {
     super(props);
-    this.corbelServices = props.data.corbel;
-    this.state = {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2,
-      }),
-      loaded: false,
-    };
-  }
-
-  componentDidMount() {
-    this.fetchData();
-  }
-
-  fetchData() {
-    this.corbelServices.getVersions()
-      .then((responseData) => {
-        this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData),
-          loaded: true,
-        });
-      })
-      .done();
   }
 
   render() {
-    if (!this.state.loaded) {
-      return (<Text>false</Text>);
-    } else {
-      return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderMovie}
-        />
-    );}
-  }
-
-  renderMovie(movie) {
     return (
       <View>
-        <View>
-          <Text>{movie.module}</Text>
-          <Text>{movie.version}</Text>
-        </View>
+        <Text>Test!</Text>
+        <Button
+          containerStyle={{ padding: 10, height: 45, overflow: 'hidden', borderRadius: 4, backgroundColor: 'grey' }}
+          style={{ fontSize: 20, color: 'black' }}
+          onPress={Actions.status}>
+          Show server status
+        </Button>
       </View>
     );
   }
 
 }
-
-
-

@@ -1,7 +1,10 @@
 
-import corbel from 'corbel-js';
+import corbel from 'corbel-js'
 
-import config from '../config.js';
+import config from '../config.js'
+
+import ServerActions from "../action/ServerActions"
+
 
 export default class CorbelService {
 
@@ -27,7 +30,7 @@ export default class CorbelService {
 			});
 
       return Promise.all(promises).then(function () {
-        return versions;
+				ServerActions.storeServerVersion(versions)
       });
 		} catch (error) { }
 	}

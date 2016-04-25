@@ -6,6 +6,16 @@ import React, {
   StyleSheet
 } from 'react-native';
 
+import CorbelService from '../../service/CorbelService.js'
+
+import Button from 'react-native-button'
+
+import {Actions} from 'react-native-router-flux'
+
+import CorbelActions from '../../action/CorbelActions.js'
+
+import CorbelStore from '../../store/CorbelStore.js'
+
 var styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -29,26 +39,40 @@ export default class Status extends Component {
 
   constructor(props) {
     super(props);
-    this.corbelServices = props.data.corbel;
+    this.corbelServices = new CorbelService();
     this.state = {
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
       loaded: false,
     };
+    this._onChange = this._onChange.bind(this);
+  }
+
+  _onChange() {
+    var versions = CorbelStore.getState()
+    if (versions.versions.loading === false) {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(versions.versions.data),
+        loaded: true,
+      });
+    }
   }
 
   componentDidMount() {
-    this.fetchData();
+    CorbelStore.listen(this._onChange)
+    CorbelActions.requestServerVersion()
+  }
+
+  componentWillUnmount() {
+    CorbelStore.unlisten(this._onChange)
   }
 
   fetchData() {
+    CorbelActions.requestServerVersion()
     this.corbelServices.getVersions()
       .then((responseData) => {
-        this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData),
-          loaded: true,
-        });
+
       })
       .done();
   }
@@ -58,11 +82,20 @@ export default class Status extends Component {
       return (<Text>false</Text>);
     } else {
       return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderModule}
-        />
-    );}
+        <View>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={this.renderModule}
+            />
+          <Button
+            containerStyle={{ padding: 10, height: 45, overflow: 'hidden', borderRadius: 4, backgroundColor: 'grey' }}
+            style={{ fontSize: 20, color: 'black' }}
+            onPress={Actions.home}>
+            back
+          </Button>
+        </View>
+      );
+    }
   }
 
   renderModule(movie) {
@@ -77,6 +110,3 @@ export default class Status extends Component {
   }
 
 }
-
-
-
