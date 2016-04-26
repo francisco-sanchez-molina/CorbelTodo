@@ -1,7 +1,7 @@
 import React, {
   Component,
+  Image,
   Text,
-  ListView,
   View,
   StyleSheet
 } from 'react-native';
@@ -26,27 +26,13 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
-  }
-});
-
-
-var styles = StyleSheet.create({
-  text: {
-    color: '#007aff',
-    fontFamily: '.HelveticaNeueInterface-MediumP4',
-    fontSize: 17,
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
-  disabledText: {
-    color: '#dcdcdc',
-  },
-  group: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  logo: {
+    width: 200,
+    height: 200,
   },
 });
+
 export default class Home extends Component {
 
   constructor(props) {
@@ -55,13 +41,14 @@ export default class Home extends Component {
 
   render() {
     return (
-      <View>
-        <Text>Test!</Text>
+      <View style={styles.container}>
+        <Image source={this.props.logo}
+       style={styles.logo} />
+        <Text style={styles.welcome}>CorbelTodo</Text>
         <Button
-          containerStyle={{ padding: 10, height: 45, overflow: 'hidden', borderRadius: 4, backgroundColor: 'grey' }}
-          style={{ fontSize: 20, color: 'black' }}
-          onPress={Actions.status}>
-          Show server status
+          style={{ fontSize: 15, color: 'black' }}
+          onPress={Actions.login}>
+          Log in
         </Button>
       </View>
     );

@@ -39,3 +39,4 @@ buck-out/
 android/app/libs
 android/keystores/debug.keystore
 app/config.js
+android/app/my-release-key.keystore
