@@ -9,9 +9,8 @@
     "alt": "^0.18.2",
     "corbel-js": "corbel-platform/corbel-js#xhrOnLoad",
     "react": "^0.14.8",
-    "react-native": "^0.24.1",
+    "react-native": "^0.25.0-rc",
     "react-native-button": "^1.4.2",
-    "react-native-router-flux": "^3.22.8",
-    "react-native-google-signin" : "^0.4.3"
+    "react-native-router-flux": "^3.22.23"
   }
 }

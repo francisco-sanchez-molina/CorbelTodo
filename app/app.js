@@ -25,17 +25,9 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <Scene>
-          <Scene key="home" type="replace" initial={true} hideTabBar={true}>
-            <Scene key="homeModal" component={Home} logo={assets.logo}/>
-          </Scene>
-          <Scene key="login" component={Modal} title="Login" >
-            <Scene key="loginModal" component={Login}/>
-          </Scene>
-          <Scene key="status" component={Modal} title="Status" >          
-            <Scene key="statusModal" component={Status}/>
-          </Scene>
-        </Scene>
+        <Scene key='home' component={Home} logo={assets.logo} initial={true} hideNavBar={true}/>       
+        <Scene key='login' component={Login} title='Login' />
+        <Scene key='status' component={Status} title='Status'/>
       </Router>
     );
   }

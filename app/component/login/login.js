@@ -35,8 +35,17 @@ export default class Login extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Login view</Text>
+      <View style={{flex: 1}}>
+        <View style={styles.container}>
+          <Text>Login view</Text>
+        </View>
+        <View>
+          <Button
+            style={{ fontSize: 12, color: 'black', }}
+            onPress={Actions.status}>
+            Server version status
+          </Button>
+        </View>
       </View>
     )
   }

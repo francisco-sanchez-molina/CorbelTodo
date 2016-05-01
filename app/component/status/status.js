@@ -8,8 +8,6 @@ import React, {
 
 import CorbelService from '../../service/CorbelService.js'
 
-import Button from 'react-native-button'
-
 import {Actions} from 'react-native-router-flux'
 
 import CorbelActions from '../../action/CorbelActions.js'
@@ -21,17 +19,7 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    backgroundColor: '#F5FCFF'
   },
 });
 
@@ -79,33 +67,29 @@ export default class Status extends Component {
 
   render() {
     if (!this.state.loaded) {
-      return (<Text>false</Text>);
+      return (
+        <View style={styles.container}>
+          <Text>Loading...</Text>
+        </View>
+      );
     } else {
       return (
-        <View>
+        <View style={styles.container}>
           <ListView
             dataSource={this.state.dataSource}
             renderRow={this.renderModule}
             />
-          <Button
-            containerStyle={{ padding: 10, height: 45, overflow: 'hidden', borderRadius: 4, backgroundColor: 'grey' }}
-            style={{ fontSize: 20, color: 'black' }}
-            onPress={Actions.home}>
-            back
-          </Button>
         </View>
       );
     }
   }
 
-  renderModule(movie) {
+  renderModule(module) {
     return (
-      <View>
         <View>
-          <Text>{movie.module}</Text>
-          <Text>{movie.version}</Text>
+          <Text>{module.module}</Text>
+          <Text>{module.version}</Text>
         </View>
-      </View>
     );
   }
 
