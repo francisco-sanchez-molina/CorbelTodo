@@ -10,7 +10,6 @@ import Button from 'react-native-button'
 
 import {Actions} from 'react-native-router-flux'
 
-
 var styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -38,6 +37,11 @@ export default class Login extends Component {
       <View style={{flex: 1}}>
         <View style={styles.container}>
           <Text>Login view</Text>
+          <Button
+          style={{ fontSize: 15, color: 'black' }}
+          onPress={Actions.notes}>
+          Go to notes
+        </Button>
         </View>
         <View>
           <Button

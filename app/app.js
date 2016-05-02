@@ -10,6 +10,7 @@ import React, {
 import Home from './component/home/home.js'
 import Login from './component/login/login.js'
 import Status from './component/status/status.js'
+import Notes from './component/notes/notes.js'
 
 
 const assets = {
@@ -28,6 +29,7 @@ export default class App extends Component {
         <Scene key='home' component={Home} logo={assets.logo} initial={true} hideNavBar={true}/>       
         <Scene key='login' component={Login} title='Login' />
         <Scene key='status' component={Status} title='Status'/>
+        <Scene key='notes' component={Notes} title='Notes'/>
       </Router>
     );
   }
